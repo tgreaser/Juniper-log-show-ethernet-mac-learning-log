@@ -32,13 +32,22 @@ A reasonable amount of time to wait for your the ephermail log to update with ne
 redirect the data to a txt file the user account can rw to.
 >> /var/log/tom-mac-learning.log
 
-NOW.. Your asking great..  now what..  Im going to get so much repeated info..  Well since we are on a *NIX box, someone already saved that day..
+NOW.. Your asking great..  now what..  Im going to get so much repeated info with the refresh .. Or how do I even see that info.
+Well since we are on a *NIX box, someone already saved that day..
+ssh back into your switch and lets take a peak at what you got.. 
+
+run start shell
+
 cat /var/log/tom-mac-learning.log | grep -v more |grep -v "refreshed"   | sort | uniq 
 and if you want to throw them at your syslog box. 
 cat /var/log/tom-mac-learning.log | grep -v more |grep -v "refreshed"   | sort | uniq | logger
 
-You can either offbox the file whenver you want.
+You can either offbox the file whatever you want.
 I setup in Junos event-options aka cron to flush the learning file.. 
 
 Hope this helps anyone .. 
+
+Lastly.. when your done screen back into your session
+screen -r 4400-mac-learning-log-session 
+and hit enter it will stop your the show ethernet mac-learning-log 
 
