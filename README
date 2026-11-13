@@ -1,0 +1,44 @@
+READ ME SEMORE 
+show ethernet mac-learning-log
+There is no knob to get this data i a clean way..  Here is a FRAGILE(will explain that later) to run the command and redirct it to a file..
+This is a little bit of a process but pays off..  
+
+1st
+Get yourself setup for the long haul so your sesson can drop but still run the command on your box.
+screen -S ex4400-mac-learning-log-session ssh tom@ex4400
+tmux too..
+
+2nd 
+Set account your using has 0 idle timeout.
+ set system login class tom-superhero idle-timeout 0;
+commit
+
+3rd 
+start shell
+
+FRAGILE Part.. When you run this command. IMMEDIATLY screen detach.. If you hit entrer it will stop the command 
+$ cli -c "show ethernet-switching mac-learning-log use-system-timezone |no-more | refresh 30" >> /var/log/tom-mac-learning.log
+
+command breakdown
+Run cli
+-c used with the " " so we can do | pipes.  You know you love *NIX .
+
+Magic command for the data we are after.. !!! 
+show ethernet-switching mac-learning-log  use timezone.
+Just give me all the data with no paging as I am just appending it 
+| no-more
+A reasonable amount of time to wait for your the ephermail log to update with new info.. 
+| refresh 30
+redirect the data to a txt file the user account can rw to.
+>> /var/log/tom-mac-learning.log
+
+NOW.. Your asking great..  now what..  Im going to get so much repeated info..  Well since we are on a *NIX box, someone already saved that day..
+cat /var/log/tom-mac-learning.log | grep -v more |grep -v "refreshed"   | sort | uniq 
+and if you want to throw them at your syslog box. 
+cat /var/log/tom-mac-learning.log | grep -v more |grep -v "refreshed"   | sort | uniq | logger
+
+You can either offbox the file whenver you want.
+I setup in Junos event-options aka cron to flush the learning file.. 
+
+Hope this helps anyone .. 
+
