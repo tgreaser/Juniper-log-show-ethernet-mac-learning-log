@@ -45,9 +45,9 @@ cat /var/log/tom-mac-learning.log | grep -v more |grep -v "refreshed"   | sort |
 You can either offbox the file whatever you want.
 I setup in Junos event-options aka cron to flush the learning file.. 
 
-Hope this helps anyone .. 
 
 Lastly.. when your done screen back into your session
 screen -r 4400-mac-learning-log-session 
 and hit enter it will stop your the show ethernet mac-learning-log 
 
+Hope this helps anyone .. 
