@@ -16,8 +16,7 @@ configuration {
        file:///mnt/;
     }
 }
-
-But for those of us that need a more uniformed, scaled , and longer term way of dealing with this .. 
+For those of us that need a more uniformed, scaled , and longer term way of dealing with this .. 
 SYSLOG is the go to for me on this 
 {master:0}[edit system syslog file tom-mac-learning.log]
 spiderman@ex4400-mp# show 
