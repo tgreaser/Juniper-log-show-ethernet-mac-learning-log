@@ -2,8 +2,8 @@
 Round 2 "FIGHT"
 Lets store that data. 
 
-So Junos already had a big easy button for archival file transfer :) vai syslog..
-That is posted this below .
+So Junos already had a big easy button for archival file transfer :) via syslog..
+
 But wait theres more..  I also figured out you can log / save to a usbkey :) .  I have done this in places backups over the network were not an option. :/ 
 **Make sure you format that slice as vfat so PC can play too..
 start shell user root
