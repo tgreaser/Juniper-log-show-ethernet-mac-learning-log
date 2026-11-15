@@ -5,6 +5,7 @@ Here is a FRAGILE(will explain that later) way to run the command and redirct it
 
 This is a little bit of a process but pays off..  Maybe during the holidays I will polish this mad dash solution to tshoot a good once over. 
 ** Planning to setup  Junos event-options or cron to send uniq logs to syslog, every  5 min tee it to a file and then  flush the learning file . 
+** EDIT .. Look at long-term-storage .. Has a few cool ideas. 
 
 1st
 Get yourself setup for the long haul so your sesson can drop but still run the command on your box.
