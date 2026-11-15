@@ -1,0 +1,33 @@
+
+Round 2 "FIGHT"
+Lets store that data. 
+
+So Junos already had a big easy button for archival file transfer :) vai syslog..
+That is posted this below .
+But wait theres more..  I also figured out you can log / save to a usbkey :) .  I have done this in places backups over the network were not an option. :/ 
+**Make sure you format that slice as vfat so PC can play too..
+start shell user root
+mount  /dev/da0s1 /mnt/   ** or whatever your usbslice is. 
+{master:0}[edit system archival]
+spiderman@ex4400-mp# show 
+configuration {
+    transfer-on-commit;
+    archive-sites {
+       file:///mnt/;
+    }
+}
+
+But for those of us that need a more uniformed, scaled , and longer term way of dealing with this .. 
+SYSLOG is the go to for me on this 
+{master:0}[edit system syslog file tom-mac-learning.log]
+spiderman@ex4400-mp# show 
+archive {
+    size 200m;
+    files 3;
+    world-readable;
+    transfer-interval 1440;
+    start-time "2026-11-15.04:30:00 -0500";
+    archive-sites {
+        "scp://jun0s-backup@parker.tom:/home/jun0s-backup/Juniper-mac-learning-logs/" password "$8$aes25"; ## SECRET-DATA
+    }
+}
