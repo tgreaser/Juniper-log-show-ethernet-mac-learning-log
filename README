@@ -20,8 +20,9 @@ commit
 3rd 
 start shell
 
-FRAGILE Part.. When you run this command. IMMEDIATLY screen detach.. If you hit entrer it will stop the command 
+FRAGILE Part.. When you run this command. IMMEDIATLY screen detach.. If you hit entrer it will stop the command .
 $ cli -c "show ethernet-switching mac-learning-log use-system-timezone |no-more | refresh 30" >> /var/log/tom-mac-learning.log
+    EDIT.. Been 3 days and the command ---^   is still working even when using long-term-storage solution of syslog. :)
 
 command breakdown
 Run cli
